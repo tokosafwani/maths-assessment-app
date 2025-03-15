@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Probability Course</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Probability Course</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="exercises.html">Exercises</a></li>
+                <li><a href="progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Flashcards</h2>
+            <p>Review key concepts with these interactive flashcards. Click on the card to flip it and see the definition.</p>
+        </section>
+
+        <section id="flashcard-container">
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="front">
+                    <h3>Probability</h3>
+                </div>
+                <div class="back">
+                    <p>The measure of the likelihood that an event will occur.</p>
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="front">
+                    <h3>Random Variable</h3>
+                </div>
+                <div class="back">
+                    <p>A variable whose possible values are outcomes of a random phenomenon.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Probability Course. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

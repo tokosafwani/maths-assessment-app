@@ -1,59 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizzes - Probability Course</title>
+    <title>Quiz - Cours de Probabilités</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Probability Course</h1>
+        <h1>Cours de Probabilités</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="quizzes.html">Quizzes</a></li>
-                <li><a href="flashcards.html">Flashcards</a></li>
-                <li><a href="exercises.html">Exercises</a></li>
-                <li><a href="progress.html">Progress</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="quizzes.html">Quiz</a></li>
+                <li><a href="flashcards.html">Cartes Mémoire</a></li>
+                <li><a href="exercises.html">Exercices</a></li>
+                <li><a href="progress.html">Progrès</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section>
-            <h2>Quizzes</h2>
-            <p>Test your knowledge with these multiple-choice questions. Select the correct answer and check your score at the end.</p>
+            <h2>Quiz</h2>
+            <p>Testez vos connaissances avec ces questions à choix multiples. Sélectionnez la bonne réponse et vérifiez votre score à la fin.</p>
         </section>
 
         <section id="quiz-container">
+            <!-- Quiz 1-10: Espaces probabilisés -->
             <div class="quiz-question">
-                <h3>Question 1: What is the probability of getting heads when flipping a fair coin?</h3>
+                <h3>Question 1 : Qu'est-ce qu'un espace probabilisé ?</h3>
                 <ul>
-                    <li><input type="radio" name="q1" value="a"> 0.25</li>
-                    <li><input type="radio" name="q1" value="b"> 0.5</li>
-                    <li><input type="radio" name="q1" value="c"> 0.75</li>
-                    <li><input type="radio" name="q1" value="d"> 1</li>
+                    <li><input type="radio" name="q1" value="a"> Un ensemble de résultats possibles</li>
+                    <li><input type="radio" name="q1" value="b"> Un triplet \((\Omega, \mathcal{F}, \mathbf{P})\)</li>
+                    <li><input type="radio" name="q1" value="c"> Une fonction de répartition</li>
+                    <li><input type="radio" name="q1" value="d"> Une mesure de probabilité</li>
                 </ul>
             </div>
 
             <div class="quiz-question">
-                <h3>Question 2: What is the probability of rolling a 6 on a fair six-sided die?</h3>
+                <h3>Question 2 : Quelle propriété doit vérifier une tribu \(\mathcal{F}\) ?</h3>
                 <ul>
-                    <li><input type="radio" name="q2" value="a"> 1/6</li>
-                    <li><input type="radio" name="q2" value="b"> 1/3</li>
-                    <li><input type="radio" name="q2" value="c"> 1/2</li>
-                    <li><input type="radio" name="q2" value="d"> 1</li>
+                    <li><input type="radio" name="q2" value="a"> Elle doit contenir l'ensemble vide</li>
+                    <li><input type="radio" name="q2" value="b"> Elle doit être stable par complémentaire</li>
+                    <li><input type="radio" name="q2" value="c"> Elle doit être stable par union dénombrable</li>
+                    <li><input type="radio" name="q2" value="d"> Toutes les réponses ci-dessus</li>
                 </ul>
             </div>
 
-            <button onclick="checkAnswers()">Submit Answers</button>
+            <div class="quiz-question">
+                <h3>Question 3 : Quelle est la probabilité de l'ensemble vide \(\emptyset\) ?</h3>
+                <ul>
+                    <li><input type="radio" name="q3" value="a"> 0</li>
+                    <li><input type="radio" name="q3" value="b"> 1</li>
+                    <li><input type="radio" name="q3" value="c"> 0.5</li>
+                    <li><input type="radio" name="q3" value="d"> Dépend de l'espace</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 4 : Qu'est-ce que \(\Omega\) dans un espace probabilisé ?</h3>
+                <ul>
+                    <li><input type="radio" name="q4" value="a"> Une tribu</li>
+                    <li><input type="radio" name="q4" value="b"> L'espace des résultats possibles</li>
+                    <li><input type="radio" name="q4" value="c"> Une mesure de probabilité</li>
+                    <li><input type="radio" name="q4" value="d"> Une fonction de répartition</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 5 : Quelle est la propriété de \(\sigma\)-additivité ?</h3>
+                <ul>
+                    <li><input type="radio" name="q5" value="a"> \(\mathbf{P}(A \cup B) = \mathbf{P}(A) + \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q5" value="b"> \(\mathbf{P}\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \mathbf{P}(A_i)\)</li>
+                    <li><input type="radio" name="q5" value="c"> \(\mathbf{P}(A \cap B) = \mathbf{P}(A) \cdot \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q5" value="d"> \(\mathbf{P}(A^c) = 1 - \mathbf{P}(A)\)</li>
+                </ul>
+            </div>
+
+            <!-- Quiz 6-10: Probabilités conditionnelles -->
+            <div class="quiz-question">
+                <h3>Question 6 : Quelle est la formule de la probabilité conditionnelle \(\mathbf{P}(B \mid A)\) ?</h3>
+                <ul>
+                    <li><input type="radio" name="q6" value="a"> \(\frac{\mathbf{P}(B)}{\mathbf{P}(A)}\)</li>
+                    <li><input type="radio" name="q6" value="b"> \(\frac{\mathbf{P}(A \cap B)}{\mathbf{P}(A)}\)</li>
+                    <li><input type="radio" name="q6" value="c"> \(\frac{\mathbf{P}(A)}{\mathbf{P}(B)}\)</li>
+                    <li><input type="radio" name="q6" value="d"> \(\mathbf{P}(A) \cdot \mathbf{P}(B)\)</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 7 : Si \(\mathbf{P}(A) = 0.4\) et \(\mathbf{P}(B \mid A) = 0.5\), quelle est \(\mathbf{P}(A \cap B)\) ?</h3>
+                <ul>
+                    <li><input type="radio" name="q7" value="a"> 0.2</li>
+                    <li><input type="radio" name="q7" value="b"> 0.5</li>
+                    <li><input type="radio" name="q7" value="c"> 0.9</li>
+                    <li><input type="radio" name="q7" value="d"> 0.1</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 8 : Quelle est la formule des probabilités totales ?</h3>
+                <ul>
+                    <li><input type="radio" name="q8" value="a"> \(\mathbf{P}(A) = \sum_{i=1}^n \mathbf{P}(A \mid B_i) \cdot \mathbf{P}(B_i)\)</li>
+                    <li><input type="radio" name="q8" value="b"> \(\mathbf{P}(A \cap B) = \mathbf{P}(A) \cdot \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q8" value="c"> \(\mathbf{P}(A \cup B) = \mathbf{P}(A) + \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q8" value="d"> \(\mathbf{P}(A^c) = 1 - \mathbf{P}(A)\)</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 9 : Quelle est la formule de Bayes ?</h3>
+                <ul>
+                    <li><input type="radio" name="q9" value="a"> \(\mathbf{P}(B \mid A) = \frac{\mathbf{P}(A \mid B) \cdot \mathbf{P}(B)}{\mathbf{P}(A)}\)</li>
+                    <li><input type="radio" name="q9" value="b"> \(\mathbf{P}(A \cap B) = \mathbf{P}(A) \cdot \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q9" value="c"> \(\mathbf{P}(A \cup B) = \mathbf{P}(A) + \mathbf{P}(B)\)</li>
+                    <li><input type="radio" name="q9" value="d"> \(\mathbf{P}(A^c) = 1 - \mathbf{P}(A)\)</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 10 : Si \(\mathbf{P}(A) = 0.3\), \(\mathbf{P}(B) = 0.4\), et \(\mathbf{P}(A \cap B) = 0.1\), quelle est \(\mathbf{P}(A \cup B)\) ?</h3>
+                <ul>
+                    <li><input type="radio" name="q10" value="a"> 0.6</li>
+                    <li><input type="radio" name="q10" value="b"> 0.7</li>
+                    <li><input type="radio" name="q10" value="c"> 0.8</li>
+                    <li><input type="radio" name="q10" value="d"> 0.9</li>
+                </ul>
+            </div>
+
+            <!-- Quiz 11-20: Lois classiques -->
+            <div class="quiz-question">
+                <h3>Question 11 : Quelle est la loi de Bernoulli ?</h3>
+                <ul>
+                    <li><input type="radio" name="q11" value="a"> Une loi discrète à deux résultats possibles</li>
+                    <li><input type="radio" name="q11" value="b"> Une loi continue</li>
+                    <li><input type="radio" name="q11" value="c"> Une loi uniforme</li>
+                    <li><input type="radio" name="q11" value="d"> Une loi exponentielle</li>
+                </ul>
+            </div>
+
+            <div class="quiz-question">
+                <h3>Question 12 : Quelle est la loi binomiale ?</h3>
+                <ul>
+                    <li><input type="radio" name="q12" value="a"> Une loi discrète modélisant le nombre de succès dans \(n\) essais indépendants</li>
+                    <li><input type="radio" name="q12" value="b"> Une loi continue</li>
+                    <li><input type="radio" name="q12" value="c"> Une loi uniforme</li>
+                    <li><input type="radio" name="q12" value="d"> Une loi exponentielle</li>
+                </ul>
+            </div>
+
+            <!-- Add more quizzes here as needed -->
+            <button onclick="checkAnswers()">Soumettre les réponses</button>
             <p id="quiz-result"></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Probability Course. All rights reserved.</p>
+        <p>&copy; 2023 Cours de Probabilités. Tous droits réservés.</p>
     </footer>
 
     <script src="js/script.js"></script>

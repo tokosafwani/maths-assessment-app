@@ -1,16 +1,22 @@
 // Quiz Logic
 function checkAnswers() {
     let score = 0;
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
+    const correctAnswers = {
+        q1: "b", q2: "d", q3: "a", q4: "b", q5: "b",
+        q6: "b", q7: "a", q8: "a", q9: "a", q10: "a",
+        q11: "a", q12: "a" // Add more correct answers as needed
+    };
 
-    if (q1 && q1.value === "b") score++;
-    if (q2 && q2.value === "a") score++;
+    for (let i = 1; i <= 12; i++) { // Update the loop range as you add more quizzes
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === correctAnswers[`q${i}`]) {
+            score++;
+        }
+    }
 
-    const result = `You scored ${score} out of 2.`;
+    const result = `Vous avez obtenu ${score} sur 12.`;
     document.getElementById("quiz-result").innerText = result;
 }
-
 // Flashcard Logic
 function flipCard(card) {
     card.classList.toggle("flipped");

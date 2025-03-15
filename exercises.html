@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises - Probability Course</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Probability Course</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="exercises.html">Exercises</a></li>
+                <li><a href="progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Exercises</h2>
+            <p>Practice solving probability problems. Enter your answer and check if it's correct.</p>
+        </section>
+
+        <section id="exercise-container">
+            <div class="exercise">
+                <h3>Exercise 1: What is the probability of drawing a red card from a standard deck of 52 cards?</h3>
+                <input type="text" id="exercise1-answer" placeholder="Your answer">
+                <button onclick="checkExercise1()">Check Answer</button>
+                <p id="exercise1-result"></p>
+            </div>
+
+            <div class="exercise">
+                <h3>Exercise 2: If you roll two fair six-sided dice, what is the probability of getting a sum of 7?</h3>
+                <input type="text" id="exercise2-answer" placeholder="Your answer">
+                <button onclick="checkExercise2()">Check Answer</button>
+                <p id="exercise2-result"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Probability Course. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

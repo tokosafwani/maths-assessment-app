@@ -1,23 +1,57 @@
-<script>
-    export let levelId;
+<script lang="ts">
+    import { onMount } from 'svelte';
+    export let levelId: string;
   
-    const topics = {
-      licence1: ["Algèbre", "Calcul", "Probabilités"],
-      licence2: ["Algèbre Linéaire", "Analyse", "Statistiques"],
-      licence3: ["Espaces Probabilisés", "Processus Stochastiques", "Théorie des Graphes"],
-      master1: ["Optimisation", "Théorie des Nombres", "Analyse Fonctionnelle"],
-      master2: ["Topologie", "Géométrie Algébrique", "Théorie des Catégories"],
-    };
+    let topics: Record<string, string[]> = {};
+    let loading = true;
+    let error = false;
+  
+    async function fetchTopics() {
+      try {
+        // Fetch topics from the Netlify function
+        const response = await fetch(`/.netlify/functions/topics`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch topics: ${response.status}`);
+        }
+        const data = await response.json();
+        topics = data;
+        loading = false;
+      } catch (err) {
+        console.error('Error fetching topics:', err);
+        error = true;
+        loading = false;
+      }
+    }
+  
+    // Fetch topics when component mounts
+    onMount(() => {
+      fetchTopics();
+    });
   </script>
   
   <div class="flex flex-col gap-4 m-8">
-    <h2 class="text-2xl font-bold">Sélectionnez un sujet pour {levelId.toUpperCase()}</h2>
-    {#each topics[levelId] as topic}
-      <a
-        href={`/${levelId}/${topic}`}
-        class="p-4 bg-green-500 text-white rounded-lg text-center hover:bg-green-600"
-      >
-        {topic}
-      </a>
-    {/each}
+    <h2 class="text-2xl font-bold">Sélectionnez un sujet pour {levelId.replace(/^\w/, c => c.toUpperCase())}</h2>
+    
+    {#if loading}
+      <div class="text-center p-4">
+        <p>Chargement des sujets...</p>
+      </div>
+    {:else if error}
+      <div class="text-center p-4 text-red-600">
+        <p>Erreur lors du chargement des sujets. Veuillez réessayer.</p>
+      </div>
+    {:else if topics[levelId] && topics[levelId].length > 0}
+      {#each topics[levelId] as topic}
+        <a
+          href={`/${levelId}/${topic}`}
+          class="p-4 bg-teal-600 text-white rounded-lg text-center hover:bg-teal-700"
+        >
+          {topic.replace(/-/g, ' ').replace(/^\w|\s\w/g, c => c.toUpperCase())}
+        </a>
+      {/each}
+    {:else}
+      <div class="text-center p-4">
+        <p>Aucun sujet disponible pour ce niveau.</p>
+      </div>
+    {/if}
   </div>

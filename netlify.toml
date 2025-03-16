@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = ".svelte-kit/netlify"
+
+[dev]
+  command = "npm run dev"
+  port = 8888
+
+
+[functions]
+  directory = "netlify/functions"  
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200

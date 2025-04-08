@@ -1,7 +1,7 @@
 import type { Context } from "@netlify/functions";
 
 import { MongoClient } from "mongodb";
-const mongoClient = new MongoClient(process.env.MONGODB_URI);
+const mongoClient = new MongoClient(process.env.MONGODB_URI || "mongodb://localhost:27017");
 const clientPromise = mongoClient.connect();
 
 export default async (req: Request, context: Context) => {

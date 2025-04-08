@@ -18,7 +18,6 @@ export default async (req: Request, context: Context) => {
 		// If a specific level is requested
 		if (pathSegments.length >= 2) {
 			const level = pathSegments[1];
-			console.log(level);
 			const topics = await collection.find({ level: level }).toArray();
 
 			// Return topics for the requested level

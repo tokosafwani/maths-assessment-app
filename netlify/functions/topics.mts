@@ -2,10 +2,7 @@ import type { Context } from '@netlify/functions';
 import { MongoClient } from 'mongodb';
 import 'dotenv/config';
 
-const mongoClient = new MongoClient(
-	process.env.MONGODB_URI ||
-		'mongodb+srv://mdj:37o9nS7ubOMjQYhJ@cluster0.upoaiot.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-);
+const mongoClient = new MongoClient(process.env.MONGODB_URI || '');
 const clientPromise = mongoClient.connect();
 
 export default async (req: Request, context: Context) => {
@@ -17,14 +14,13 @@ export default async (req: Request, context: Context) => {
 	if (req.method === 'GET') {
 		const database = (await clientPromise).db('mdj');
 		const collection = database.collection('topics');
-		
 
 		// If a specific level is requested
 		if (pathSegments.length >= 2) {
 			const level = pathSegments[1];
 
-			const topics = await collection.find({level: level}).toArray();
-			 
+			const topics = await collection.find({ level: level }).toArray();
+
 			// Return topics for the requested level
 			return new Response(JSON.stringify(topics), {
 				headers: {

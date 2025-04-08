@@ -1,6 +1,7 @@
 import type { Context } from "@netlify/functions";
-
 import { MongoClient } from "mongodb";
+import 'dotenv/config'
+console.log(process.env)
 const mongoClient = new MongoClient(process.env.MONGODB_URI || "mongodb://localhost:27017");
 const clientPromise = mongoClient.connect();
 

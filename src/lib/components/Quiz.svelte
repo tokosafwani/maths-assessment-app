@@ -12,7 +12,8 @@
       question: string;
       options: QuizOption[];
     }
-  
+  $: topicDisplayName = '';
+
     let quizzes: QuizQuestion[] = [];
     let loading = true;
     let error: string | null = null;
@@ -23,6 +24,10 @@
   
     onMount(async () => {
       try {
+     const topicData = await fetch(`/.netlify/functions/topics/byname/${topic}`)
+     const topicDataJson = await topicData.json()
+     topicDisplayName = topicDataJson.displayName
+
         const response = await fetch(`/.netlify/functions/quizzes/${levelId}/${topic}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch quiz: ${response.statusText}`);
@@ -57,7 +62,7 @@
   </script>
   
   <div class="m-8 p-8 border border-gray-300 rounded-lg">
-    <h2 class="text-2xl font-bold">Quiz: {topic} ({levelId.toUpperCase()})</h2>
+    <h2 class="text-2xl font-bold">Quiz: {topicDisplayName} ({levelId.toUpperCase()})</h2>
     
     {#if loading}
       <p class="mt-4">Chargement du quiz...</p>

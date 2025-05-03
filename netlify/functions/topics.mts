@@ -16,7 +16,7 @@ export default async (req: Request, context: Context) => {
 		const collection = database.collection('topics');
 
 		// If a specific level is requested
-		if (pathSegments.length >= 2) {
+		if (pathSegments.length >= 2&&!pathSegments[1].startsWith("byname")) {
 			const level = pathSegments[1];
 			const topics = await collection.find({ level: level }).toArray();
 
@@ -26,7 +26,15 @@ export default async (req: Request, context: Context) => {
 					'Content-Type': 'application/json'
 				}
 			});
-		}
+		}else if(pathSegments.length >= 2&&pathSegments[1].startsWith("byname")){
+      const topic = pathSegments[1].split("/")[1];  
+      const topicData = await collection.findOne({ name: topic });
+      return new Response(JSON.stringify(topicData), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
 
 		// If no specific level is requested, return all topics
 		const topics = await collection.find({}).toArray();

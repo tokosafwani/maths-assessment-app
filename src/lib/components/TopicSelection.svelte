@@ -2,7 +2,13 @@
     import { onMount } from 'svelte';
     export let levelId: string;
   
-    let topics: Record<string, string[]> = {};
+    interface Topic {
+      name: string;
+      displayName: string;
+      level: string;
+    }
+  
+    let topics: Topic[] = [];
     let loading = true;
     let error = false;
   
@@ -27,6 +33,9 @@
     onMount(() => {
       fetchTopics();
     });
+    
+    // Filter topics by the current level
+    $: levelTopics = topics.filter(topic => topic.level === levelId);
   </script>
   
   <div class="flex flex-col gap-4 m-8">
@@ -40,15 +49,17 @@
       <div class="text-center p-4 text-red-600">
         <p>Erreur lors du chargement des sujets. Veuillez réessayer.</p>
       </div>
-    {:else if topics[levelId] && topics[levelId].length > 0}
-      {#each topics[levelId] as topic}
-        <a
-          href={`/${levelId}/${topic}`}
-          class="p-4 bg-teal-600 text-white rounded-lg text-center hover:bg-teal-700"
-        >
-          {topic.replace(/-/g, ' ').replace(/^\w|\s\w/g, c => c.toUpperCase())}
-        </a>
-      {/each}
+    {:else if levelTopics.length > 0}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {#each levelTopics as topicItem}
+          <a
+            href={`/${levelId}/${topicItem.name}`}
+            class="p-4 bg-teal-600 text-white rounded-lg text-center hover:bg-teal-700 transition-colors"
+          >
+            {topicItem.displayName}
+          </a>
+        {/each}
+      </div>
     {:else}
       <div class="text-center p-4">
         <p>Aucun sujet disponible pour ce niveau.</p>

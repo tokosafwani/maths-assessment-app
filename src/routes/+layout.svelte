@@ -46,17 +46,17 @@
 
 <header class="bg-teal-600 p-4 text-white">
 	<div class="container mx-auto flex items-center justify-between">
-		<a href="/" class="text-2xl font-bold">Math Quiz</a>
+		<a href="/" class="text-2xl font-bold">MathsDojo</a>
 		<nav>
 			<ul class="flex space-x-4">
-				<li><a href="/" class="hover:text-teal-100 hover:underline">Home</a></li>
+				<li><a href="/" class="hover:text-teal-100 hover:underline">Accueil</a></li>
 				<li class="relative">
 					<button
 						id="quiz-button"
 						onclick={() => showQuizMenu = !showQuizMenu}
 						class="flex items-center hover:text-teal-100 hover:underline"
 					>
-						Quiz <span class="ml-1">▼</span>
+						Quizz <span class="ml-1">▼</span>
 					</button>
 					{#if showQuizMenu}
 						<div
